@@ -49,7 +49,7 @@ pipeline {
           sh "jx step tag --version \$(cat VERSION)"
           sh "pip install --upgrade pip"
           sh "pip install -r requirements.txt"
-          sh "python -m pytest tests/test_rsvpapp.py"
+          sh "python -m unittest"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
         }
