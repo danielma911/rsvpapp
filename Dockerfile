@@ -7,9 +7,6 @@ ENV TEXT2 Garage RSVP!
 ENV LOGO https://raw.githubusercontent.com/cloudyuga/rsvpapp/master/static/cloudyuga.png
 ENV COMPANY CloudYuga Technology Pvt. Ltd.
 
-RUN pip install --upgrade pip
-RUN pip3 install --upgrade setuptools
-RUN pip3 install neuralpy
 RUN pip3 install -r requirements.txt
 CMD python rsvp.py
 
