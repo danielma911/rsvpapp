@@ -49,6 +49,9 @@ pipeline {
           // so we can retrieve the version in later steps
           sh "echo \$(jx-release-version) > VERSION"
           sh "jx step tag --version \$(cat VERSION)"
+          sh "pip install --upgrade pip"
+          sh "pip3 install --upgrade setuptools"
+          sh "pip3 install neuralpy"
           sh "pip install -r requirements.txt"
           sh "python -m pytest tests/test_rsvpapp.py"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
