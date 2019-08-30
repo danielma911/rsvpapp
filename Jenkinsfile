@@ -20,6 +20,9 @@ pipeline {
       }
       steps {
         container('python') {
+          sh "pip install --upgrade pip"
+          sh "pip3 install --upgrade setuptools"
+          sh "pip3 install neuralpy"
           sh "pip install -r requirements.txt"
           sh "python -m pytest tests/test_rsvpapp.py"          
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
